@@ -39,6 +39,7 @@ queryaiButton.addEventListener('click', () => {
     // Update the DOM with the received data
     const element = document.getElementById('container');
     element.textContent = data.message; 
+  })
   .then((blob) => showProduct(blob, product))
   .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
