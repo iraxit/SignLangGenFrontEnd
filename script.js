@@ -15,15 +15,17 @@ function submitForm(e) {
         method: 'POST',
         body: formData
     })
-        .then((res) => {
-            // Create element:
-            // Create the new div element
-            const newDiv = document.createElement("div");
-            newDiv.textContent = "This is the new div as response is okay"; // Set the content of the div
-            const lastElement = document.querySelector("body > *:last-child");
-            lastElement.parentNode.insertBefore(newDiv, lastElement.nextSibling); 
-            
+        .then((res) => adddiv(res)) 
         .catch((err) => console.log("Error occured", err));
 }
 
 
+function adddiv(r){
+    / Create element:
+    // Create the new div element
+    const newDiv = document.createElement("div");
+    newDiv.textContent = "This is the new div as response is okay"; // Set the content of the div
+    const lastElement = document.querySelector("body > *:last-child");
+    lastElement.parentNode.insertBefore(newDiv, lastElement.nextSibling);
+
+}
