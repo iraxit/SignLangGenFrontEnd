@@ -1,47 +1,22 @@
-// Event listener for image upload button
-uploadButton.addEventListener('click', () => {
-  console.log('upload button clicked')
-  const file = imageUpload.files[0];
-  if (file) {
-    const formData = new FormData();
-    formData.append('image', file);
-    fetch('/upload', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        console.log('Image uploaded successfully!');
-      } else {
-        console.error('Error uploading image!');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  } else {
-    alert("Please select an image file.");
-  }
-});
+const form = document.getElementById("form");
 
-// Event listener for image upload button
-queryaiButton.addEventListener('click', () => {
-  console.log('Query AI button clicked')
-  const url = 'https://signlanggen.onrender.com/queryai';
-  fetch(url)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+form.addEventListener("submit", submitForm);
+
+function submitForm(e) {
+    e.preventDefault();
+    const name = document.getElementById("name");
+    const files = document.getElementById("files");
+    const formData = new FormData();
+    formData.append("name", name.value);
+    for(let i =0; i < files.files.length; i++) {
+            formData.append("files", files.files[i]);
     }
-    return response.blob();
-  })
-  .then(data => {
-    // Update the DOM with the received data
-    const element = document.getElementById('container');
-    element.textContent = data.message; 
-  })
-  .then((blob) => showProduct(blob, product))
-  .catch((err) => console.error(`Fetch problem: ${err.message}`));
-  });
-  
-  
+    fetch("http://localhost:5000/upload_files", {
+        method: 'POST',
+        body: formData
+    })
+        .then((res) => console.log(res))
+        .catch((err) => console.log("Error occured", err));
+}
+
+
