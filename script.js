@@ -15,7 +15,13 @@ function submitForm(e) {
         method: 'POST',
         body: formData
     })
-        .then((res) => console.log(res))
+        .then((res) => {
+            // Create element:
+            const para = document.createElement("p");
+            para.innerText = "This is a paragraph.";
+
+            // Append to body:
+            document.body.appendChild(para);})
         .catch((err) => console.log("Error occured", err));
 }
 
