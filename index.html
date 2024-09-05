@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Invoking Node.js API</title>
+    <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Image Upload</h1>
-    <input type="file" id="imageUpload" accept="image/*">
-    <button id="uploadButton">Upload</button>
-    <button id="queryaiButton">Query AI</button>
-    
-    <button id="getDataButton">Get Data</button>
-    <div id="result"></div>
     <div class="container">
-        <!-- Data from open ai will be rendered here -->
+        <h1>File Upload</h1>
+        <form id='form'>
+            <div class="input-group">
+                <label for='name'>Your name</label>
+                <input name='name' id='name' placeholder="Enter your name" />
+            </div>
+            <div class="input-group">
+                <label for='files'>Select files</label>
+                <input id='files' type="file" multiple>
+            </div>
+            <button class="submit-btn" type='submit'>Upload</button>
+        </form>
     </div>
-    
-    <script src="script.js"></script>
+    <div> <button id="queryaiButton">Query AI</button></div>
+    <script src='./script.js'></script>
 </body>
+
+
 </html>
