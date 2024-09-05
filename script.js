@@ -17,11 +17,12 @@ function submitForm(e) {
     })
         .then((res) => {
             // Create element:
-            const para = document.createElement("p");
-            para.innerText = "This is a paragraph.";
-
-            // Append to body:
-            document.body.appendChild(para);})
+            // Create the new div element
+            const newDiv = document.createElement("div");
+            newDiv.textContent = "This is the new div as response is okay"; // Set the content of the div
+            const lastElement = document.querySelector("body > *:last-child");
+            lastElement.parentNode.insertBefore(newDiv, lastElement.nextSibling); 
+            
         .catch((err) => console.log("Error occured", err));
 }
 
